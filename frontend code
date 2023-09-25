@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bookstore</title>
+</head>
+<body>
+    <h1>Welcome to the Online Bookstore</h1>
+
+    <!-- User registration form -->
+    <form id="register-form">
+        <input type="text" placeholder="Username" id="reg-username">
+        <input type="password" placeholder="Password" id="reg-password">
+        <button type="button" onclick="registerUser()">Register</button>
+    </form>
+
+    <!-- User login form -->
+    <form id="login-form">
+        <input type="text" placeholder="Username" id="login-username">
+        <input type="password" placeholder="Password" id="login-password">
+        <button type="button" onclick="loginUser()">Login</button>
+    </form>
+
+    <!-- User query button -->
+    <button type="button" onclick="userQuery()">User Query</button>
+
+    <!-- Add Book form -->
+    <form id="add-book-form">
+        <input type="text" placeholder="Book Title" id="book-title">
+        <input type="text" placeholder="Book Status" id="book-status">
+        <button type="button" onclick="addBook()">Add Book</button>
+    </form>
+
+    <!-- Delete Book form -->
+    <form id="delete-book-form">
+        <input type="number" placeholder="Book ID" id="delete-book-id">
+        <button type="button" onclick="deleteBook()">Delete Book</button>
+    </form>
+
+    <!-- Update Book status forms -->
+    <form id="update-new-form">
+        <input type="number" placeholder="Book ID" id="update-new-id">
+        <button type="button" onclick="updateToNew()">Update to New</button>
+    </form>
+
+    <form id="update-available-form">
+        <input type="number" placeholder="Book ID" id="update-available-id">
+        <button type="button" onclick="updateToAvailable()">Update to Available</button>
+    </form>
+
+    <!-- List Books button -->
+    <button type="button" onclick="listBooks()">List Books</button>
+
+    <div id="book-list"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
