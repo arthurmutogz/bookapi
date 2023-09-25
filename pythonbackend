@@ -1,0 +1,70 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Dummy data for users and books (replace with database)
+users = [{'username': 'user1', 'password': 'password1'}]
+books = [{'id': 1, 'title': 'Book 1', 'status': 'available'},
+         {'id': 2, 'title': 'Book 2', 'status': 'new'}]
+
+# User registration API
+@app.route('/api/register', methods=['POST'])
+def register_user():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    users.append({'username': username, 'password': password})
+    return jsonify({'message': 'User registered successfully'})
+
+# User login API
+@app.route('/api/login', methods=['POST'])
+def login_user():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    # Check user credentials (replace with actual authentication logic)
+    if {'username': username, 'password': password} in users:
+        return jsonify({'message': 'User logged in successfully'})
+    return jsonify({'message': 'Authentication failed'}), 401
+
+# User query API
+@app.route('/api/user-query', methods=['GET'])
+def user_query():
+    # Implement user query logic here
+    return jsonify({'message': 'User query result'})
+
+# Add Book API
+@app.route('/api/add-book', methods=['POST'])
+def add_book():
+    data = request.get_json()
+    title = data.get('title')
+    status = data.get('status')
+    books.append({'id': len(books) + 1, 'title': title, 'status': status})
+    return jsonify({'message': 'Book added successfully'})
+
+# Delete Book API
+@app.route('/api/delete-book/<int:book_id>', methods=['DELETE'])
+def delete_book(book_id):
+    # Implement book deletion logic here
+    return jsonify({'message': 'Book deleted successfully'})
+
+# Update Book to "New" API
+@app.route('/api/update-book-new/<int:book_id>', methods=['PUT'])
+def update_book_to_new(book_id):
+    # Implement book update logic here
+    return jsonify({'message': 'Book updated to "New"'})
+
+# Update Book to "Available" API
+@app.route('/api/update-book-available/<int:book_id>', methods=['PUT'])
+def update_book_to_available(book_id):
+    # Implement book update logic here
+    return jsonify({'message': 'Book updated to "Available"'})
+
+# List Books API
+@app.route('/api/list-books', methods=['GET'])
+def list_books():
+    # Implement book listing logic here
+    return jsonify({'books': books})
+
+if __name__ == '__main__':
+    app.run(debug=True)
